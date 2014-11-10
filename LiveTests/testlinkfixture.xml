@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TestLinkFixtureConfiguration>
-  <url value="http://mathume.com/testing/testlink-1.9.11/lib/api/xmlrpc/v1/xmlrpc.php" override="yes" />
+  <url value="http://192.168.1.134/lib/api/xmlrpc/v1/xmlrpc.php" override="yes" />
   <ProjectName  value="LiveTestProject" />
   <UserId value="automation"  override="yes" />
   <TestPlan value="LiveTestPlan" />
   <PlatformName value="Any" />
-  <DevKey value="dc32e3dd02a5ecfe33eb270886654ba5" override="yes" />
+  <DevKey value="aef3b3dbb1c7aa6859e9a6ae8d064b6a" override="yes" />
 </TestLinkFixtureConfiguration>
