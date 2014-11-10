@@ -209,7 +209,9 @@ namespace Meyn.TestLink.NUnitExport
  
             try
             {
-                string TestName = result.Name;
+                var fullNamePath = result.FullName.Split('.');
+                var classNameAndTestName = new string[]{fullNamePath[fullNamePath.Length - 2], fullNamePath[fullNamePath.Length - 1]};
+                string TestName = string.Join(".", classNameAndTestName);
 
                 if (adaptor.ConnectionValid == false)
                 {

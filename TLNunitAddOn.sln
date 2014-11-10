@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{23537D
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveTests", "LiveTests\LiveTests.csproj", "{38AAB065-EC70-452F-B235-00D0D5336811}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,10 @@ Global
 		{B412DDEB-7308-4FCF-8C6A-1EAF38F90DED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B412DDEB-7308-4FCF-8C6A-1EAF38F90DED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B412DDEB-7308-4FCF-8C6A-1EAF38F90DED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38AAB065-EC70-452F-B235-00D0D5336811}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38AAB065-EC70-452F-B235-00D0D5336811}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38AAB065-EC70-452F-B235-00D0D5336811}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38AAB065-EC70-452F-B235-00D0D5336811}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
