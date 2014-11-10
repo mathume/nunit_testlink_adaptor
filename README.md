@@ -10,5 +10,5 @@ Currently there's also a dependency to CookComputing.XmlRpcV2 wich is handled as
 
 Build:
 I use VS 2010 and NuGet (dependencies to XmlRpcV2, NUnit and NUnit.Runners).
-I run LiveTests with the NUnit runner in $SolutionDir\packages\NUnit.Runners.2.6.3\tools. Add <supportedRuntime version="v4.0.30319" /> to nunit.exe.config.
+I run LiveTests with the NUnit runner in $SolutionDir\packages\NUnit.Runners.2.6.3\tools. Add &lt;supportedRuntime version=&quot;v4.0.30319&quot; /&gt; to nunit.exe.config.
 
