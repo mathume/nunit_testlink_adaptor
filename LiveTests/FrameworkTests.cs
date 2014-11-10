@@ -39,27 +39,19 @@ namespace LiveTests
         public void ValidConnection()
         {
             var att = new TestLinkFixtureAttribute();
-            att.ProjectName = "LiveTestProject";
-            att.TestPlan = "LiveTestPlan";
             att.TestSuite = "TestName";
-            att.Url = "http://mathume.com/testing/testlink-1.9.11/lib/api/xmlrpc/v1/xmlrpc.php";
-            att.UserId = "automation";
-            att.DevKey = "16c4f9ae0383e5989923756dc71f76d4";
+            att.ConfigFile = "testlinkfixture.xml";
+            att.ConsiderConfigFile(".");
             var ad = new TestLinkAdaptor();
             ad.ConnectionData = att;
+            
             Assert.That(ad.ConnectionValid);
         }
     }
 
     [TestLinkFixture(
-        ProjectName="LiveTestProject",
-        TestPlan="LiveTestPlan",
         TestSuite="TestName",
-        PlatformName="Any",
-        Url="http://mathume.com/testing/testlink-1.9.11/lib/api/xmlrpc/v1/xmlrpc.php",
-        UserId = "automation",
-        DevKey = "16c4f9ae0383e5989923756dc71f76d4"
-        )]
+        ConfigFile="testlinkfixture.xml")]
     [TestFixture]
     public class NoInheritance
     {
@@ -70,15 +62,10 @@ namespace LiveTests
         }
     }
 
+
     [TestLinkFixture(
-        ProjectName="LiveTestProject",
-        TestPlan="LiveTestPlan",
         TestSuite = "TestName",
-        PlatformName = "Any",
-        Url="http://mathume.com/testing/testlink-1.9.11/lib/api/xmlrpc/v1/xmlrpc.php",
-        UserId = "automation",
-        DevKey = "16c4f9ae0383e5989923756dc71f76d4"
-        )]
+        ConfigFile = "testlinkfixture.xml")]
     [TestFixture]
     public abstract class SuperClassDefiningTestSuiteAndFixture
     {
@@ -112,15 +99,10 @@ namespace LiveTests
         }
     }
 
+
     [TestLinkFixture(
-        ProjectName = "LiveTestProject",
-        TestPlan = "LiveTestPlan",
         TestSuite = "TestName",
-        PlatformName = "Any",
-        Url = "http://mathume.com/testing/testlink-1.9.11/lib/api/xmlrpc/v1/xmlrpc.php",
-        UserId = "automation",
-        DevKey = "16c4f9ae0383e5989923756dc71f76d4"
-        )]
+        ConfigFile = "testlinkfixture.xml")]
     [TestFixture]
     public class InheritsWithExplicitAttribute : SuperClassNotDefiningTestSuite
     {
@@ -131,15 +113,10 @@ namespace LiveTests
         }
     }
 
+
     [TestLinkFixture(
-        ProjectName = "LiveTestProject",
-        TestPlan = "LiveTestPlan",
         TestSuite = "TestName",
-        PlatformName = "Any",
-        Url = "http://mathume.com/testing/testlink-1.9.11/lib/api/xmlrpc/v1/xmlrpc.php",
-        UserId = "automation",
-        DevKey = "16c4f9ae0383e5989923756dc71f76d4"
-        )]
+        ConfigFile = "testlinkfixture.xml")]
     [TestFixture]
     public class InheritsFromAndWithExplicitAttribute : SuperClassDefiningTestSuiteAndFixture
     {

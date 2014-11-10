@@ -734,6 +734,92 @@
             Dictionary with execution totals
             </summary>
         </member>
+        <member name="T:Meyn.TestLink.TestLinkAdaptor">
+            <summary>
+            encapsulates the basic comms to the TestLink API 
+            for the purpose of recording test results based upon the TestLinkFixtureAttribute 
+            information.
+            </summary>
+            <remarks>This class is used by test exporters for automated testing frameworks such as Gallio or NUnit</remarks>
+        </member>
+        <member name="F:Meyn.TestLink.TestLinkAdaptor.basicConnectionValid">
+            <summary>
+            can we talk to testlink
+            </summary>
+        </member>
+        <member name="F:Meyn.TestLink.TestLinkAdaptor.projectDataValid">
+            <summary>
+            do we have project plan, project id and test suite correct?
+            </summary>
+        </member>
+        <member name="F:Meyn.TestLink.TestLinkAdaptor.proxy">
+            <summary>
+            the proxy to the current server
+            </summary>
+        </member>
+        <member name="M:Meyn.TestLink.TestLinkAdaptor.RecordTheResult(System.Int32,Meyn.TestLink.TestCaseResultStatus,System.String)">
+            <summary>
+            record a result with testlink;
+            </summary>
+            <param name="testCaseId"></param>
+            <param name="status"></param>
+            <param name="notes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Meyn.TestLink.TestLinkAdaptor.GetTestCaseId(System.String)">
+            <summary>
+            get a test case id. If the test case does not exist then create one
+            </summary>
+            <param name="testName"></param>       
+            <returns>a valid test case id or 0 in case of failure</returns>
+        </member>
+        <member name="M:Meyn.TestLink.TestLinkAdaptor.getTestCaseByName(System.String,System.Int32)">
+            <summary>
+            get the test case by this name in this particular test suite
+            </summary>
+            <param name="testCaseName"></param>
+            <param name="testSuiteId">the test suite the test case has to be in</param>
+            <returns>a valid test case id or 0 if no test case was found</returns>
+        </member>
+        <member name="M:Meyn.TestLink.TestLinkAdaptor.updateConnectionData(Meyn.TestLink.TestLinkFixtureAttribute)">
+            <summary>
+            try to update the connection with a minimum of API calls to testlink
+            </summary>
+            <param name="newData"></param>
+        </member>
+        <member name="M:Meyn.TestLink.TestLinkAdaptor.basicConnection(System.String,System.String)">
+            <summary>
+            create the basic connection and test it out
+            </summary>
+            <param name="devKey"></param>
+            <param name="url"></param>
+            <returns>true if the connection is valid</returns>
+        </member>
+        <member name="M:Meyn.TestLink.TestLinkAdaptor.updateData(System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            update selected bits of the testlink fixture data
+            </summary>
+            <param name="newProject"></param>
+            <param name="newTestPlan"></param>
+            <param name="newTestSuite"></param>
+            <returns>true if data have been set up successfully</returns>
+        </member>
+        <member name="M:Meyn.TestLink.TestLinkAdaptor.GetTestSuiteId(System.Int32,System.String)">
+            <summary>
+            retrieve the testsuite id 
+            </summary>
+            <returns>0 or a valid test suite Id</returns>
+        </member>
+        <member name="P:Meyn.TestLink.TestLinkAdaptor.ConnectionValid">
+            <summary>
+            can we record test results
+            </summary>
+        </member>
+        <member name="P:Meyn.TestLink.TestLinkAdaptor.ConnectionData">
+            <summary>
+            sets up connection and retrieves basic data
+            </summary>
+        </member>
         <member name="T:Meyn.TestLink.TestCaseResultStatus">
             <summary>
             represent the result of a test case execution
@@ -1358,92 +1444,6 @@
             <param name="devKey"></param>
             <param name="nodeID"></param>
             <returns></returns>
-        </member>
-        <member name="T:Meyn.TestLink.TestLinkAdaptor">
-            <summary>
-            encapsulates the basic comms to the TestLink API 
-            for the purpose of recording test results based upon the TestLinkFixtureAttribute 
-            information.
-            </summary>
-            <remarks>This class is used by test exporters for automated testing frameworks such as Gallio or NUnit</remarks>
-        </member>
-        <member name="F:Meyn.TestLink.TestLinkAdaptor.basicConnectionValid">
-            <summary>
-            can we talk to testlink
-            </summary>
-        </member>
-        <member name="F:Meyn.TestLink.TestLinkAdaptor.projectDataValid">
-            <summary>
-            do we have project plan, project id and test suite correct?
-            </summary>
-        </member>
-        <member name="F:Meyn.TestLink.TestLinkAdaptor.proxy">
-            <summary>
-            the proxy to the current server
-            </summary>
-        </member>
-        <member name="M:Meyn.TestLink.TestLinkAdaptor.RecordTheResult(System.Int32,Meyn.TestLink.TestCaseResultStatus,System.String)">
-            <summary>
-            record a result with testlink;
-            </summary>
-            <param name="testCaseId"></param>
-            <param name="status"></param>
-            <param name="notes"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Meyn.TestLink.TestLinkAdaptor.GetTestCaseId(System.String)">
-            <summary>
-            get a test case id. If the test case does not exist then create one
-            </summary>
-            <param name="testName"></param>       
-            <returns>a valid test case id or 0 in case of failure</returns>
-        </member>
-        <member name="M:Meyn.TestLink.TestLinkAdaptor.getTestCaseByName(System.String,System.Int32)">
-            <summary>
-            get the test case by this name in this particular test suite
-            </summary>
-            <param name="testCaseName"></param>
-            <param name="testSuiteId">the test suite the test case has to be in</param>
-            <returns>a valid test case id or 0 if no test case was found</returns>
-        </member>
-        <member name="M:Meyn.TestLink.TestLinkAdaptor.updateConnectionData(Meyn.TestLink.TestLinkFixtureAttribute)">
-            <summary>
-            try to update the connection with a minimum of API calls to testlink
-            </summary>
-            <param name="newData"></param>
-        </member>
-        <member name="M:Meyn.TestLink.TestLinkAdaptor.basicConnection(System.String,System.String)">
-            <summary>
-            create the basic connection and test it out
-            </summary>
-            <param name="devKey"></param>
-            <param name="url"></param>
-            <returns>true if the connection is valid</returns>
-        </member>
-        <member name="M:Meyn.TestLink.TestLinkAdaptor.updateData(System.Boolean,System.Boolean,System.Boolean)">
-            <summary>
-            update selected bits of the testlink fixture data
-            </summary>
-            <param name="newProject"></param>
-            <param name="newTestPlan"></param>
-            <param name="newTestSuite"></param>
-            <returns>true if data have been set up successfully</returns>
-        </member>
-        <member name="M:Meyn.TestLink.TestLinkAdaptor.GetTestSuiteId(System.Int32,System.String)">
-            <summary>
-            retrieve the testsuite id 
-            </summary>
-            <returns>0 or a valid test suite Id</returns>
-        </member>
-        <member name="P:Meyn.TestLink.TestLinkAdaptor.ConnectionValid">
-            <summary>
-            can we record test results
-            </summary>
-        </member>
-        <member name="P:Meyn.TestLink.TestLinkAdaptor.ConnectionData">
-            <summary>
-            sets up connection and retrieves basic data
-            </summary>
         </member>
     </members>
 </doc>

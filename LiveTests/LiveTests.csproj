@@ -76,6 +76,9 @@
       <Name>TestLinkFixture</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\testlinkfixture1.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>XCOPY "$(TargetDir)**" "$(SolutionDir)packages\NUnit.Runners.2.6.3\tools\addins" /Y /S /I</PostBuildEvent>
