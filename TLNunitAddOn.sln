@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TLNunitAddOn", "NUnit\TLNunitAddOn.csproj", "{FB3A6EFF-316F-4362-B3FB-C5EA395EF1CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestLinkAPI", "TestLinkAPI\TestLinkAPI.csproj", "{743BC178-7039-4D01-B3AF-83099B8411BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestLinkFixture", "TestLinkFixture\TestLinkFixture.csproj", "{B412DDEB-7308-4FCF-8C6A-1EAF38F90DED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FB3A6EFF-316F-4362-B3FB-C5EA395EF1CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB3A6EFF-316F-4362-B3FB-C5EA395EF1CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB3A6EFF-316F-4362-B3FB-C5EA395EF1CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB3A6EFF-316F-4362-B3FB-C5EA395EF1CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{743BC178-7039-4D01-B3AF-83099B8411BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{743BC178-7039-4D01-B3AF-83099B8411BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{743BC178-7039-4D01-B3AF-83099B8411BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{743BC178-7039-4D01-B3AF-83099B8411BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B412DDEB-7308-4FCF-8C6A-1EAF38F90DED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B412DDEB-7308-4FCF-8C6A-1EAF38F90DED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B412DDEB-7308-4FCF-8C6A-1EAF38F90DED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B412DDEB-7308-4FCF-8C6A-1EAF38F90DED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
