@@ -168,12 +168,15 @@ namespace Meyn.TestLink.NUnitExport
             {
                
                 string testFixtureName = extractTestFixture(result.FullName);
+                string testFixtureNameAfterOneInheritance = stripLastPart(testFixtureName);
                 log.Debug(string.Format("Processing results for test {0} in fixture: {1}",result.Name, testFixtureName));
                 if (fixtures.ContainsKey(testFixtureName))
                 {
-                    Meyn.TestLink.TestLinkFixtureAttribute tlfa = fixtures[testFixtureName];
-                    //tlfa.ConsiderConfigFile(); // ensure that a config file is read in
-                    reportResult(result, tlfa);
+                    reportResult(result, testFixtureName);
+                }
+                else if(fixtures.ContainsKey(testFixtureNameAfterOneInheritance)){
+                    testFixtureName = testFixtureNameAfterOneInheritance;
+                    reportResult(result, testFixtureName);
                 }
                 else
                 {
@@ -186,6 +189,28 @@ namespace Meyn.TestLink.NUnitExport
                     log.Warning(string.Format("Failed to record test case '{0}'", result.Name));
                 }
             }
+        }
+
+        private void reportResult(TestResult result, string testFixtureName)
+        {
+            Meyn.TestLink.TestLinkFixtureAttribute tlfa = fixtures[testFixtureName];
+            //tlfa.ConsiderConfigFile(); // ensure that a config file is read in
+            reportResult(result, tlfa);
+        }
+
+        private string stripLastPart(string testFixtureName)
+        {
+            if (!testFixtureName.Contains("."))
+            {
+                return testFixtureName;
+            }
+            var allParts = testFixtureName.Split('.');
+            var withoutLastPart = new string[allParts.Length - 1];
+            for (int i = 0; i < withoutLastPart.Length; i++)
+            {
+                withoutLastPart[i] = allParts[i];
+            }
+            return string.Join(".", withoutLastPart);
         }
 
         private bool IsDllPath(string path)
@@ -209,9 +234,7 @@ namespace Meyn.TestLink.NUnitExport
  
             try
             {
-                var fullNamePath = result.FullName.Split('.');
-                var classNameAndTestName = new string[]{fullNamePath[fullNamePath.Length - 2], fullNamePath[fullNamePath.Length - 1]};
-                string TestName = string.Join(".", classNameAndTestName);
+                string TestName = getFullTestNameExceptAssemblyName(result);
 
                 if (adaptor.ConnectionValid == false)
                 {
@@ -244,6 +267,18 @@ namespace Meyn.TestLink.NUnitExport
             {
                 log.Error(ex.Message, ex);
             }
+        }
+
+        private static string getFullTestNameExceptAssemblyName(TestResult result)
+        {
+            var fullNamePath = result.FullName.Split('.');
+            var newPath = new string[fullNamePath.Length - 1];
+            for (int i = 0; i < newPath.Length; i++)
+            {
+                newPath[i] = fullNamePath[i + 1];
+            }
+            string TestName = string.Join(".", newPath);
+            return TestName;
         }
 
         /// <summary>
