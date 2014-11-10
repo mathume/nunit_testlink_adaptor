@@ -4,7 +4,7 @@
   <ProjectName  value="LiveTestProject" />
   <UserId value="automation"  override="yes" />
   <TestPlan value="LiveTestPlan" />
-  <PlatformName value="Any" />
+  <PlatformName value="somePlatform" />
   <PlatformId value="1" override="yes"/>
   <DevKey value="aef3b3dbb1c7aa6859e9a6ae8d064b6a" override="yes" />
 </TestLinkFixtureConfiguration>

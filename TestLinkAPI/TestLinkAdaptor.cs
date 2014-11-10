@@ -79,6 +79,7 @@ namespace Meyn.TestLink
         private int testPlanId;
         private int testProjectId;
         private string platformName = string.Empty;
+        private int platformId;
 
         /// <summary>
         /// sets up connection and retrieves basic data
@@ -102,7 +103,7 @@ namespace Meyn.TestLink
         {
             GeneralResult result = null;
             if (ConnectionValid == true)
-                result = proxy.ReportTCResult(testCaseId, testPlanId, status, platformName: platformName, notes: notes.ToString());
+                result = proxy.ReportTCResult(testCaseId, testPlanId, status, platformId: platformId, platformName: platformName, notes: notes.ToString());
             else
                 result = new GeneralResult("Invalid Connection", false);
             return result;
@@ -131,7 +132,7 @@ namespace Meyn.TestLink
                     return 0;
                 }
                 string externalId = string.Format("{0}-{1}", currentProject.prefix, tcExternalId);
-                int featureId = proxy.addTestCaseToTestPlan(currentProject.id, testPlanId, externalId, result.additionalInfo.version_number);
+                int featureId = proxy.addTestCaseToTestPlan(currentProject.id, testPlanId, externalId, result.additionalInfo.version_number, platformId);
                 if (featureId == 0)
                 {
                     Console.Error.WriteLine("Failed to assign TestCase {0} to testplan", testName);
@@ -205,6 +206,7 @@ namespace Meyn.TestLink
             }
             connectionData = newData;
             platformName = connectionData.PlatformName;
+            platformId = connectionData.PlatformId;
 
             //attempt a new connection if url or devkey are different
             if (connectionDifferent || devKeyDifferent)

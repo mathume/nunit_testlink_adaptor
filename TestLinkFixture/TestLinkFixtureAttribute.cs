@@ -67,13 +67,7 @@ namespace Meyn.TestLink
             get { return userId; }
             set { userId = value; }
         }
-        //private string password;
-
-        //public string Password
-        //{
-        //    get { return password; }
-        //    set { password = value; }
-        //}
+        
         private string devKey;
 
         /// <summary>
@@ -114,7 +108,9 @@ namespace Meyn.TestLink
         }
 
 
+
         private string configFile;
+        private int platformId;
         /// <summary>
         /// path to a configuration file to override settings here
         /// </summary>
@@ -199,6 +195,7 @@ namespace Meyn.TestLink
             testSuite = updateAttributeFromConfigFile(doc, testSuite, "TestSuite");
             platformName = updateAttributeFromConfigFile(doc, platformName,"PlatformName");
             devKey = updateAttributeFromConfigFile(doc, devKey, "DevKey");
+            platformId = int.Parse(updateAttributeFromConfigFile(doc, platformId.ToString(), "PlatformId"));
             
             return true;
         }
@@ -224,6 +221,21 @@ namespace Meyn.TestLink
                 return Node.Attributes["value"].Value;
             else
                 return existingValue;
+        }
+
+        /// <summary>
+        /// needed in order to add test case to test plan
+        /// </summary>
+        public int PlatformId
+        {
+            get
+            {
+                return this.platformId;
+            }
+            set
+            {
+                this.platformId = value;
+            }
         }
     }
 }
