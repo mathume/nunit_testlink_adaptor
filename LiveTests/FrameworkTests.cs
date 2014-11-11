@@ -126,4 +126,112 @@ namespace LiveTests
             Assert.Pass();
         }
     }
+
+    [TestLinkFixture(
+        TestSuite = "TestName",
+        ConfigFile = "testlinkfixture.xml")]
+    [TestFixture]
+    public class ParameterizedTestCases
+    {
+        [Test]
+        public void OneParameter(
+            [Values("a", "b")] string some) 
+        {
+            Assert.Pass();
+        }
+
+        [Test, Sequential]
+        public void TwoParametersSequential(
+            [Values("a", "b")] string some1,
+            [Values("c", "d")] string some2)
+        {
+            Assert.Pass();
+        }
+
+        [Test]
+        public void TwoParametersPaired(
+        [Values("a", "b")] string some1,
+            [Values("c", "d")] string some2)
+        {
+            Assert.Pass();
+        }
+
+        static object[] _OneParameter = {
+            "a",
+            "b"
+        };
+
+        static object[] TwoParameters = {
+            new object[]{"a", new string[]{"b"}},
+            new object[]{"c", new string[]{"d"}}
+        };
+
+        [Test, TestCaseSource("_OneParameter")]
+        public void OneParameterTCSource(string some)
+        {
+            Assert.Pass();
+        }
+
+        [Test, TestCaseSource("TwoParameters")]
+        public void TwoParametersTCSource(object some1, object some2)
+        {
+            Assert.Pass();
+        }
+    }
+
+    [TestLinkFixture(
+        TestSuite = "TestName",
+        ConfigFile = "testlinkfixture.xml")]
+    [TestFixture]
+    public class ParamterizedTestsInSubclass:ParameterizedTestCases
+    {
+        static object[] _OneParameter = {
+            "a",
+            "b"
+        };
+
+        static object[] TwoParameters = {
+            new object[]{"a", new string[]{"b"}},
+            new object[]{"c", new string[]{"d"}}
+        };
+
+        static object[] ThreeParameters = {
+                                              new object[]{"", 1, new string[]{"a"}},
+                                              new object[]{"text", 1, new string[]{"b"}}
+                                          };
+        [Test, TestCaseSource("ThreeParameters")]
+        public void ThreeParametersDefinedInSubclass(string a, int b, string[] c)
+        {
+            Assert.Pass();
+        }
+        
+    }
+
+    [TestLinkFixture(
+        TestSuite = "TestName",
+        ConfigFile = "testlinkfixture.xml")]
+    [TestFixture]
+    public class ParameterizedWithDots
+    {
+        [Test]
+        public void OneParameter(
+            [Values("a.a")] string some)
+        {
+            Assert.Pass();
+        }
+
+        [Test]
+        public void TwoParameters(
+            [Values("a.a")] string some1,
+            [Values("b.b")] string some2)
+        {
+            Assert.Pass();
+        }
+    }
+
+    [TestLinkFixture(
+        TestSuite = "TestName",
+        ConfigFile = "testlinkfixture.xml")]
+    [TestFixture]
+    public class InheritsDots : ParameterizedWithDots { }
 }

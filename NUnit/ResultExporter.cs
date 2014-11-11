@@ -31,6 +31,7 @@ using NUnit.Core.Extensibility;
 using NUnit.Core;
 using System.Reflection;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Meyn.TestLink.NUnitExport
 {
@@ -167,8 +168,12 @@ namespace Meyn.TestLink.NUnitExport
             }
             else 
             {
-               
-                string testFixtureName = extractTestFixture(result.FullName);
+                string testNameFullPath = result.FullName;
+                if(result.FullName.EndsWith(")"))//parameterized test
+                {
+                    testNameFullPath = removeParanthesisPart(testNameFullPath);
+                }
+                string testFixtureName = extractTestFixture(testNameFullPath);
                 string testFixtureNameAfterOneInheritance = stripLastPart(testFixtureName);
                 log.Debug(string.Format("Processing results for test {0} in fixture: {1}",result.Name, testFixtureName));
                 if (fixtures.ContainsKey(testFixtureName))
@@ -190,6 +195,18 @@ namespace Meyn.TestLink.NUnitExport
                     log.Warning(string.Format("Failed to record test case '{0}'", result.Name));
                 }
             }
+        }
+
+        private string removeParanthesisPart(string testNameFullPath)
+        {
+            var re = new Regex(@"(.*)(\(.+\))");
+            if (!re.IsMatch(testNameFullPath))
+            {
+                log.Warning(testNameFullPath + " didn't match " + re.ToString() + ". This shouldn't happen. Returning " + testNameFullPath);
+                return testNameFullPath;
+            }
+            var m = re.Match(testNameFullPath);
+            return m.Groups[1].Value;
         }
 
         private void reportResult(TestResult result, string testFixtureName)
