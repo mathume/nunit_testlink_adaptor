@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>NUnitTestLinkAddOn</title>
+    <authors>mathume@mathume.com</authors>
+    <owners>mathume@mathume.com</owners>
+    <projectUrl>https://github.com/mathume/nunit_testlink_adaptor</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Contains the NUnit addon assemblies to be put into $NUNIT_INSTALLDIR/addins/</description>
+    <releaseNotes>Some reporting issues were fixed.</releaseNotes>
+    <copyright>Copyright 2014</copyright>
+    <tags>NUnit TestLink</tags>
+  <dependencies>
+    <dependency id="xmlrpcnet" version="3.0.0.266"/>
+    <dependency id="TestLinkFixture" version="1.0.0"/>
+  </dependencies>
+  </metadata>
+</package>

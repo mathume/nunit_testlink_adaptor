@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>TestLinkFixture</title>
+    <authors>mathume@mathume.com</authors>
+    <owners>mathume@mathume.com</owners>
+    <projectUrl>https://github.com/mathume/nunit_testlink_adaptor</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>The TestLinkFixture attribute defines parameters that the NUnit-TestLink-Adaptor will use to automatically create and report test results from NUnit test runs.</description>
+    <releaseNotes>Fixed reporting for test cases with "." in parameters and in subclasses. Fixed test case assignment issue with TestLink 1.9.13.</releaseNotes>
+    <copyright>Copyright 2014</copyright>
+    <tags>NUnit TestLink</tags>
+  </metadata>
+</package>
