@@ -1,6 +1,9 @@
 NUnit to TestLink addin/adaptor from https://code.google.com/p/gallio-testlink-adapter/ by Stephan Meyn (MIT License).
 This repository only contains projects for NUnit and TestLink, not the gallio adaptor.
 
+NuGet:
+The TestLinkFixture and NUnitTestLinkAddOn are available on nuget http://www.nuget.org/packages?q=testlink
+
 Dependencies:
 NUnit 2.6.3
 .NET 4.0
